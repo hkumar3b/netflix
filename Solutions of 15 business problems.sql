@@ -46,7 +46,6 @@ SELECT *
 FROM
 (
 	SELECT 
-		-- country,
 		UNNEST(STRING_TO_ARRAY(country, ',')) as country,
 		COUNT(*) as total_content
 	FROM netflix
@@ -95,7 +94,7 @@ WHERE
 SELECT *
 FROM netflix
 WHERE 
-	TYPE = 'TV Show'
+	type = 'TV Show'
 	AND
 	SPLIT_PART(duration, ' ', 1)::INT > 5
 
@@ -109,9 +108,7 @@ FROM netflix
 GROUP BY 1
 
 
--- 10. Find each year and the average numbers of content release by India on netflix. 
--- return top 5 year with highest avg content release !
-
+-- 10. Find each year and the average numbers of content release by India on netflix and return top 5 year with highest avg content release 
 
 SELECT 
 	country,
@@ -132,7 +129,7 @@ LIMIT 5
 
 -- 11. List all movies that are documentaries
 SELECT * FROM netflix
-WHERE listed_in LIKE '%Documentaries'
+WHERE listed_in LIKE '%Documentaries%'
 
 
 
